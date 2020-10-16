@@ -11,9 +11,9 @@ import { useStateValue, addPatient, updatePatient } from "../state";
 
 const PatientListPage: React.FC = () => {
   const [{ patients }, dispatch] = useStateValue();
-  let history = useHistory();
+  const history = useHistory();
 
-  console.log('PATIENTS', patients)
+  console.log('PATIENTS', patients);
 
   const [modalOpen, setModalOpen] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | undefined>();
@@ -40,13 +40,13 @@ const PatientListPage: React.FC = () => {
   };
 
   const handleShowPatient = async (id: string) => {
-    let patient: Patient | undefined = Object.values(patients).find((patient: Patient) => patient.id === id)
+    const patient: Patient | undefined = Object.values(patients).find((patient: Patient) => patient.id === id);
     if (!patient || (patient && !patient.ssn)) {
       const { data: DBpatient } = await axios.get<Patient>(`${apiBaseUrl}/patients/${id}`);
       dispatch(updatePatient(DBpatient));
     }
-    history.push(`/patients/${id}`)
-  }
+    history.push(`/patients/${id}`);
+  };
 
   return (
     <div className="App">

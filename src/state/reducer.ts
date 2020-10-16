@@ -73,33 +73,33 @@ export const setPatientList = (payload: Patient[]): Action => {
   return {
     type: "SET_PATIENT_LIST",
     payload
-  }
-}
+  };
+};
 
 export const addPatient = (payload: Patient): Action => {
   return {
     type: "ADD_PATIENT",
     payload
-  }
-}
+  };
+};
 
 export const updatePatient = (payload: Patient): Action => {
   return {
     type: "UPDATE_PATIENT",
     payload
-  }
-}
+  };
+};
 
 export const setDiagnoses = (payload: Diagnosis[]): Action => {
   return {
     type: "SET_DIAGNOSES",
     payload
-  }
-}
+  };
+};
 
 export const addEntry = (payload: Entry): Action => {
   return {
     type: "ADD_ENTRY",
     payload
-  }
-}
+  };
+};

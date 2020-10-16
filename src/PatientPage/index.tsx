@@ -3,9 +3,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useStateValue, updatePatient } from "../state";
 import { Icon, Container, Button } from "semantic-ui-react";
-import { Patient, EntryType } from "../types";
-import EntryDetails from './EntryDetails'
-import AddEntryModal from './AddEntryModal'
+import { Patient } from "../types";
+import EntryDetails from './EntryDetails';
+import AddEntryModal from './AddEntryModal';
 import { apiBaseUrl } from "../constants";
 import { EntryFormValues } from "./AddEntryForm";
 
@@ -17,11 +17,11 @@ const PatientPage: React.FC = () => {
   const [modalOpen, setModalOpen] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | undefined>();
 
-  let { id }: any = useParams();
-  let patient: Patient | undefined = Object.values(patients).find((patient: Patient) => patient.id === id);
+  const { id }: any = useParams();
+  const patient: Patient | undefined = Object.values(patients).find((patient: Patient) => patient.id === id);
 
 
-  console.log('DIAGNOOSIT', diagnoses)
+  console.log('DIAGNOOSIT', diagnoses);
 
   const submitNewEntry = async (values: EntryFormValues) => {
    
@@ -36,7 +36,7 @@ const PatientPage: React.FC = () => {
       console.error(e.response.data);
       setError(e.response.data.error);
     }
-  }
+  };
 
   const openModal = (): void => setModalOpen(true);
 
@@ -68,7 +68,7 @@ const PatientPage: React.FC = () => {
       </Container>
     );
   } else {
-    return <div>Unknown patient</div>
+    return <div>Unknown patient</div>;
   }
 
 };

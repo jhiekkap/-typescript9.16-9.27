@@ -21,10 +21,10 @@ const icons: any = {
     'Hospital': 'hospital',
     'OccupationalHealthcare': 'fork',
     'HealthCheck': 'check'
-}
+};
 
 const BasicCard: React.FC<BasicCardProps> = (props) => {
-    const { type, date, description, specialist, diagnosisCodes, diagnoses } = props
+    const { type, date, description, specialist, diagnosisCodes, diagnoses } = props;
     return (
         <Card>
             <Card.Content>
@@ -41,8 +41,8 @@ const BasicCard: React.FC<BasicCardProps> = (props) => {
                         Diagnoses:
                        <ul>
                             {diagnosisCodes.map((code, c) => {
-                                const diagnosis: Diagnosis | undefined = Object.values(diagnoses).find((diagnosis: Diagnosis) => diagnosis.code === code)
-                                return <li key={c}>{code}{' '}{diagnosis && diagnosis.name}</li>
+                                const diagnosis: Diagnosis | undefined = Object.values(diagnoses).find((diagnosis: Diagnosis) => diagnosis.code === code);
+                                return <li key={c}>{code}{' '}{diagnosis && diagnosis.name}</li>;
                             })}
                         </ul>
                     </Container>}
@@ -51,11 +51,11 @@ const BasicCard: React.FC<BasicCardProps> = (props) => {
                 {props.children}
             </Card.Content>
         </Card>
-    )
-}
+    );
+};
 
-const HospitalEntryCard: React.FC<{ entry: HospitalEntry, diagnoses: { [code: string]: Diagnosis } }> = ({ entry, diagnoses }) => {
-    const { discharge, ...basics } = entry
+const HospitalEntryCard: React.FC<{ entry: HospitalEntry; diagnoses: { [code: string]: Diagnosis } }> = ({ entry, diagnoses }) => {
+    const { discharge, ...basics } = entry;
     return (
         <BasicCard {...basics} diagnoses={diagnoses}>
             {discharge &&
@@ -64,11 +64,11 @@ const HospitalEntryCard: React.FC<{ entry: HospitalEntry, diagnoses: { [code: st
                     <p>Criteria: {discharge.criteria}</p>
                 </Container>}
         </BasicCard>
-    )
-}
+    );
+};
 
-const OccupationalHealthcareEntryCard: React.FC<{ entry: OccupationalHealthcareEntry, diagnoses: { [code: string]: Diagnosis } }> = ({ entry, diagnoses }) => {
-    const { employerName, sickLeave, ...basics } = entry
+const OccupationalHealthcareEntryCard: React.FC<{ entry: OccupationalHealthcareEntry; diagnoses: { [code: string]: Diagnosis } }> = ({ entry, diagnoses }) => {
+    const { employerName, sickLeave, ...basics } = entry;
     return (
         <BasicCard {...basics} diagnoses={diagnoses}>
             <p>Employer: {employerName}</p>
@@ -81,17 +81,17 @@ const OccupationalHealthcareEntryCard: React.FC<{ entry: OccupationalHealthcareE
                     </ul>
                 </Container>}
         </BasicCard>
-    )
-}
+    );
+};
 
-const HealthCheckEntryCard: React.FC<{ entry: HealthCheckEntry, diagnoses: { [code: string]: Diagnosis } }> = ({ entry, diagnoses }) => {
-    const { healthCheckRating, ...basics } = entry
+const HealthCheckEntryCard: React.FC<{ entry: HealthCheckEntry; diagnoses: { [code: string]: Diagnosis } }> = ({ entry, diagnoses }) => {
+    const { healthCheckRating, ...basics } = entry;
     return (
         <BasicCard {...basics} diagnoses={diagnoses}>
             <HealthRatingBar showText={true} rating={healthCheckRating} />
         </BasicCard>
-    )
-}
+    );
+};
 
 const EntryDetails: React.FC<CardProps> = ({ entry, diagnoses }) => {
 
@@ -109,8 +109,8 @@ const EntryDetails: React.FC<CardProps> = ({ entry, diagnoses }) => {
         case EntryType.HealthCheck:
             return <HealthCheckEntryCard entry={entry} diagnoses={diagnoses} />;
         default:
-            return assertNever(entry)
+            return assertNever(entry);
     }
-}
+};
 
 export default EntryDetails;

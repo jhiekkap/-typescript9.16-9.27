@@ -13,7 +13,7 @@ import { EntryType, HealthCheckRating, HospitalEntry, HealthCheckEntry, Occupati
 type HospitalEntryValues = Omit<HospitalEntry, "id">;
 type HealthCheckEntryFormValues = Omit<HealthCheckEntry, "id">;
 type OccupationalHealthcareEntryFormValues = Omit<OccupationalHealthcareEntry, "id">;
-export type EntryFormValues = HospitalEntryValues | HealthCheckEntryFormValues | OccupationalHealthcareEntryFormValues
+export type EntryFormValues = HospitalEntryValues | HealthCheckEntryFormValues | OccupationalHealthcareEntryFormValues;
 
 
 interface Props {
@@ -29,9 +29,9 @@ const typeOptions: TypeOption[] = [
 
 
 const validateDate = (date: string) => {
-  const YYYY_MM_DDregex = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
-  return YYYY_MM_DDregex.test(date)
-}
+  const YYYY_MM_DDregex = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
+  return YYYY_MM_DDregex.test(date);
+};
 
 export const AddEntryForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
   const [{ diagnoses }] = useStateValue();
@@ -97,20 +97,20 @@ export const AddEntryForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
           }
         }
         if (Object.entries(errors.discharge).length === 0) {
-          const { discharge, ...rest } = errors
-          errors = rest
+          const { discharge, ...rest } = errors;
+          errors = rest;
         }
         if (Object.entries(errors.sickLeave).length === 0) {
-          const { sickLeave, ...rest } = errors
-          errors = rest
+          const { sickLeave, ...rest } = errors;
+          errors = rest;
         }
-        console.log('ENTRY FORM ERRORS', errors)
+        console.log('ENTRY FORM ERRORS', errors);
         return errors;
       }}
     >
       {({ isValid, dirty, values, ...props }) => {
 
-        console.log('ENTRY FORM VALUES', values)
+        console.log('ENTRY FORM VALUES', values);
 
         return (
           <Form className="form ui">
